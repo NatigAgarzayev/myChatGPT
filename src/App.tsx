@@ -13,10 +13,14 @@ interface IChat {
 
 function App() {
   const [text, setText] = useState("")
-  const [chat, setChat] = useState<IChat[]>(JSON.parse(window.localStorage.getItem("chat")) || [])
+  const [chat, setChat] = useState<IChat[]>([])
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
+    const data = window.localStorage.getItem("chat")
+    if (typeof data === "string") {
+      setChat(JSON.parse(data))
+    }
     toBottomOfTheBox()
   }, [])
 
@@ -25,7 +29,7 @@ function App() {
   }, [chat])
 
   const toBottomOfTheBox = (): void => {
-    const objDiv = document.querySelector(".chat")
+    const objDiv = document.querySelector(".chat")!
     // objDiv.scrollTop = objDiv.scrollHeight
     objDiv.scrollTo({
       top: objDiv.scrollHeight,
@@ -86,12 +90,11 @@ function App() {
             chat && chat.map((item, index) => (
               item.text?.role === "assistant" ?
                 item.text?.url ?
-                  <div onClick={() => handleImageOpening(item.text.url)} className="msg msg__assitant" key={index} >
+                  <div onClick={() => handleImageOpening(item.text.url || "")} className="msg msg__assitant" key={index} >
                     <img style={{ cursor: "pointer" }} width={512} height="auto" src={`${item.text.url}`} alt="something else" />
-                    <Editor />
                   </div>
                   :
-                  <div className="msg msg__assitant" key={index} dangerouslySetInnerHTML={{ __html: item.text?.content }}></div>
+                  <div className="msg msg__assitant" key={index} dangerouslySetInnerHTML={{ __html: item.text?.content || "" }}></div>
                 :
                 (<div className="msg msg__user" key={index}>{item.text?.content}</div>)
             ))
