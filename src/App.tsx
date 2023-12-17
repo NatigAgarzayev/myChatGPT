@@ -42,7 +42,7 @@ function App() {
     setIsLoading(true)
     setChat(curr => [...curr, { text: { role: "user", content: text } }])
     try {
-      await axios.post("hhttps://my-chat-gpt-server.onrender.com/send-message", {
+      await axios.post("https://my-chat-gpt-server.onrender.com/send-message", {
         content: text
       })
         .then(res => res.data)
