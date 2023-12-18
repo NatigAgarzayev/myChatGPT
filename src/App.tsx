@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios'
 import loading from "./assets/react.svg"
+import { Link } from 'react-router-dom'
+import faq from "./assets/help.png"
 
 interface IChat {
   text: {
@@ -83,6 +85,11 @@ function App() {
 
   return (
     <div className="container">
+      <div className="faq">
+        <Link to="/faq">
+          <img src={faq} alt="FAQ" />
+        </Link>
+      </div>
 
       <div className="chat">
         {

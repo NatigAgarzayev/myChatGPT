@@ -5,6 +5,13 @@
   position: relative;
 }
 
+.faq{
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
 
 .input__box{
   position: fixed;
