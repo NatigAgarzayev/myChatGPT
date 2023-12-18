@@ -7,6 +7,13 @@ export default function Faq() {
     return (
         <div>
             It's a FAQ page.
+            It's a FAQ page.
+            It's a FAQ page.
+            It's a FAQ page.
+            It's a FAQ page.
+            It's a FAQ page.
+            It's a FAQ page.
+            It's a FAQ page.
             <div onClick={() => nav("/")}>Go home</div>
         </div>
     )
