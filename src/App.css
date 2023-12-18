@@ -45,9 +45,9 @@
   width: 3px;
 }
  
-.chat::-webkit-scrollbar-track {
+/* .chat::-webkit-scrollbar-track {
 }
- 
+  */
 .chat::-webkit-scrollbar-thumb {
   background-color: rgb(221, 221, 221);
 }
